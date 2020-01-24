@@ -4,6 +4,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,169 +12,236 @@
     <title>Dokumentation projekt Vt</title>
 
     <style>
-        table, td, th {
-            border: 1px solid black
+        
+        td,
+        th {
+            border-bottom: 1px solid rgb(45, 97, 165);
+        }
+
+        body {
+            margin: 0;
+            top: 0;
+            background-color: #e2e2e2;
+        }
+
+        h1 {
+            margin: 0;
+            padding-left: 1em;
+            padding-top: 3em;
+            padding-bottom: 1em;
+        }
+
+        h2 {
+            border-bottom: 1px solid rgb(45, 97, 165);
+        }
+
+        :root {
+            color: rgb(45, 97, 165);
+        }
+
+        .neomorph {
+            margin: 2em ;
+            padding: 0.5em 1em 2em 1em;
+            border-radius: 1em;
+            box-shadow:
+                0.25em 0.25em 0.5em rgba(0, 0, 0, 0.1),
+                -0.25em -0.25em 0.5em rgba(255, 255, 255, 0.5);
+        }
+
+        table {
+            padding: 1em 0.5em 1em 0.5em;
+            border-radius: 1em;
+            box-shadow:
+                0.25em 0.25em 0.5em rgba(0, 0, 0, 0.1),
+                -0.25em -0.25em 0.5em rgba(255, 255, 255, 0.5);
         }
     </style>
 
 </head>
+
 <body>
 
     <h1>Dokumentation projekt Vt20</h1>
+    <section class="neomorph">
+        <h2>1. Idébeskrivning</h2>
+        <!-- Vad ska du göra? Vilken är din målgrupp? Om du utvecklar en tidigare sida; Vad ska du förändra/utveckla? -->
+        <p class="">En planerings hemsida där man kan lokalt lägga in deadlines och att göra listor. Målgruppen är alla som vill
+            planera sitt liv. Det kan vara studenter som vill ha överblick över läxor, eller arbetande som vill ha en
+            lokal planering tillgänglig på en hemsida. Det kommer göras med hjälp av cookies då jag ännu inte vet hur
+            man bygger dynamiska sidor. Med cookies blir det en hybrid. Inspiration tas från Trello.com där man kan göra
+            visuella listor på vad man ska göra, gör, och har gjort eller vilken typ av lista som helst. Den största
+            utmaningen kommer alltså bli funktionaliteten på listorna och sortering av lokal data. Har kollat in
+            neomorphism design och tänker att jag ska göra den här sidan på ett sådan stilrent sätt.</p>
+    </section>
+    <section class="neomorph">
+        <h2>2. Planering</h2>
 
-    <h2>1. Idébeskrivning</h2>
-    <!-- Vad ska du göra? Vilken är din målgrupp? Om du utvecklar en tidigare sida; Vad ska du förändra/utveckla? -->
-    En planerings hemsida där man kan lokalt lägga in deadlines och att göra listor. Målgruppen är alla som vill planera sitt liv. Det kan vara studenter som vill ha överblick över läxor, eller arbetande som vill ha en lokal planering tillgänglig på en hemsida. Det kommer göras med hjälp av cookies då jag ännu inte vet hur man bygger dynamiska sidor. Med cookies blir det en hybrid. Inspiration tas från Trello.com där man kan göra visuella listor på vad man ska göra, gör, och har gjort eller vilken typ av lista som helst. Den största utmaningen kommer alltså bli funktionaliteten på listorna och sortering av lokal data. 
-    <h2>2. Planering</h2>
+        <h3>2.1 Handskiss</h3>
+        <!-- Här lägger du en bild på din handskiss av layouten. Viktigt att du beskriver vilka boxelement som ska användas. Visa även hur du tänker med ditt grid (Hur många kolumner?) -->
 
-    <h3>2.1 Handskiss</h3>
-    <!-- Här lägger du en bild på din handskiss av layouten. Viktigt att du beskriver vilka boxelement som ska användas. Visa även hur du tänker med ditt grid (Hur många kolumner?) -->
+        <h3>2.2 Schema</h3>
+        <!-- Vad ska du göra när? Inte för detaljerat. -->
 
-    <h3>2.2 Schema</h3>
-    <!-- Vad ska du göra när? Inte för detaljerat. -->
+        <table>
+            <tr>
+                <th>V.</th>
+                <th>På lektionen</th>
+                <th>Utanför lektionen</th>
+            </tr>
 
-    <table>
-        <tr>
-            <th>Vecka</th><th>På lektionen</th><th>Utanför lektionen</th>
-        </tr>
+            <tr>
+                <td>4</td>
+                <td>
+                    <!-- Vad görs på lektionen vecka 4? -->
+                    Brainstorma idéer, skissa och undersök hur andra sådana sidor ser ut.
+                </td>
+                <td>
+                    <!-- Vad görs utanför lektionen vecka 4? -->
+                    Fortsätta skissa och komma på idéer för funktionalitet.
+                </td>
+            </tr>
 
-        <tr>
-            <td>4</td>
-            <td>
-            <!-- Vad görs på lektionen vecka 4? -->
-            Brainstorma idéer, skissa och undersök hur andra sådana sidor ser ut.
-            </td>
-            <td>
-            <!-- Vad görs utanför lektionen vecka 4? -->
-            Fortsätta skissa och komma på idéer för funktionalitet.
-            </td>
-        </tr>
+            <tr>
+                <td>5</td>
+                <td>
+                    <!-- Vad görs på lektionen vecka 5? -->
+                    Fråga Leo om man får styla planering.html så att det ser lite trevligare ut att läsa.
+                    Skissa mobil samt desktop layout.
+                    (Pappersprototyp-ish)
+                </td>
+                <td>
+                    <!-- Vad görs utanför lektionen vecka 5? -->
+                    Undersök hur man implementerar cookies
+                </td>
+            </tr>
 
-        <tr>          
-            <td>5</td>
-            <td>
-            <!-- Vad görs på lektionen vecka 5? -->
-            Fråga Leo om man får styla planering.html så att det ser lite trevligare ut att läsa. 
-            Skissa mobil samt desktop layout.
-            (Pappersprototyp-ish)
-            </td>
-            <td>
-            <!-- Vad görs utanför lektionen vecka 5? -->
-            Undersök hur man implementerar cookies
-            </td>
-        </tr>
+            <tr>
+                <td>6</td>
+                <td>
+                    <!-- Vad görs på lektionen vecka 6? -->
+                    Börja koda block-strukturen för hemsidan.
+                </td>
+                <td>
+                    <!-- Vad görs utanför lektionen vecka 6? -->
+                    Kom på hur cookies bör användas i min hemsida
+                </td>
+            </tr>
 
-        <tr>          
-            <td>6</td>
-            <td>
-            <!-- Vad görs på lektionen vecka 6? -->
-            Börja koda block-strukturen för hemsidan.
-            </td>
-            <td>
-            <!-- Vad görs utanför lektionen vecka 6? -->
-            Kom på hur cookies bör användas i min hemsida
-            </td>
-        </tr>
+            <tr>
+                <td>7</td>
+                <td>
+                    <!-- Vad görs på lektionen vecka 7? -->
 
-        <tr>           
-            <td>7</td>
-            <td>
-            <!-- Vad görs på lektionen vecka 7? -->
+                </td>
+                <td>
+                    <!-- Vad görs utanför lektionen vecka 7? -->
+                </td>
+            </tr>
 
-            </td>
-            <td>
-            <!-- Vad görs utanför lektionen vecka 7? -->
-            </td>
-        </tr>
+            <tr>
+                <td>8</td>
+                <td>
+                    <!-- Vad görs på lektionen vecka 8? -->
+                </td>
+                <td>
+                    <!-- Vad görs utanför lektionen vecka 8? -->
+                </td>
+            </tr>
 
-        <tr>           
-            <td>8</td>
-            <td>
-            <!-- Vad görs på lektionen vecka 8? -->
-            </td>
-            <td>
-            <!-- Vad görs utanför lektionen vecka 8? -->
-            </td>
-        </tr>
+            <tr>
+                <td>9</td>
+                <td>
+                    <!-- Vad görs på lektionen vecka 9? -->
+                </td>
+                <td>
+                    <!-- Vad görs utanför lektionen vecka 9? -->
+                </td>
+            </tr>
 
-        <tr>          
-            <td>9</td>
-            <td>
-            <!-- Vad görs på lektionen vecka 9? -->
-            </td>
-            <td>
-            <!-- Vad görs utanför lektionen vecka 9? -->
-            </td>
-        </tr>
+            <tr>
+                <td>10</td>
+                <td>
+                    <!-- Vad görs på lektionen vecka 10? -->
+                </td>
+                <td>
+                    <!-- Vad görs utanför lektionen vecka 10? -->
+                </td>
+            </tr>
 
-        <tr>          
-            <td>10</td>
-            <td>
-            <!-- Vad görs på lektionen vecka 10? -->
-            </td>
-            <td>
-            <!-- Vad görs utanför lektionen vecka 10? -->
-            </td>
-        </tr>
+            <tr>
+                <td>11</td>
+                <td>
+                    <!-- Vad görs på lektionen vecka 11? -->
+                </td>
+                <td>
+                    <!-- Vad görs utanför lektionen vecka 11? -->
+                </td>
+            </tr>
 
-        <tr>           
-            <td>11</td>
-            <td>
-            <!-- Vad görs på lektionen vecka 11? -->
-            </td>
-            <td>
-            <!-- Vad görs utanför lektionen vecka 11? -->
-            </td>
-        </tr>
+            <tr>
+                <td>12</td>
+                <td>
+                    <!-- Vad görs på lektionen vecka 12? -->
+                </td>
+                <td>
+                    <!-- Vad görs utanför lektionen vecka 12? -->
+                </td>
+            </tr>
 
-        <tr>          
-            <td>12</td>
-            <td>
-            <!-- Vad görs på lektionen vecka 12? -->
-            </td>
-            <td>
-            <!-- Vad görs utanför lektionen vecka 12? -->
-            </td>
-        </tr>
+        </table>
+    </section>
 
-    </table>
+    <section class="neomorph">
+        <h2>3. Dokumentation</h2>
+        <!-- Här skriver du efter varje lektion. Vad har jag gjort? Vad gick bra? Vad gick mindre bra? Vad ska jag tänka på till nästa gång? -->
 
+        <h3>Lektion vecka 4</h3>
+        <!-- Fyll på med dokumentation här. -->
+        <p>Jag har kommit på vilken slags hemsida jag ska skapa. Och har börjat skissa layouten för olika stora skärmar.
+            Det
+            svåra under denna lektion var att komma på vad jag skulle ta mig an som inte var tråkigt och som skulle
+            kunna
+            utmana mig. Då jag hållit på en del med statiska sidor av olika typer var det svårt att komma på något som
+            intresserade mig. Det som hjälpte var att diskutera med klasskamrater och framför allt läraren (Emil Wilbas)
+            vilket tillslut gav mig inspiration. En större del av lektionen hade passerat när jag väl valt vad jag ville
+            göra så jag han tyvärr inte med mycket mer. (Jag skriver detta lite senare på dagen) Till nästa lektion
+            kommer
+            jag att ha en mental plan på vad jag ska göra; vilket förhoppningsvis gör att jag kan vara mer produktiv än
+            vad
+            jag var idag. </p>
 
-    <h2>3. Dokumentation</h2>
-    <!-- Här skriver du efter varje lektion. Vad har jag gjort? Vad gick bra? Vad gick mindre bra? Vad ska jag tänka på till nästa gång? -->
+        <h3>Lektion vecka 5</h3>
+        <!-- Fyll på med dokumentation här. -->
 
-    <h3>Lektion vecka 4</h3>
-    <!-- Fyll på med dokumentation här. -->
-    Jag har kommit på vilken slags hemsida jag ska skapa. Och har börjat skissa layouten för olika stora skärmar. Det svåra under denna lektion var att komma på vad jag skulle ta mig an som inte var tråkigt och som skulle kunna utmana mig. Då jag hållit på en del med statiska sidor av olika typer var det svårt att komma på något som intresserade mig. Det som hjälpte var att diskutera med klasskamrater och framför allt läraren (Emil Wilbas) vilket tillslut gav mig inspiration. En större del av lektionen hade passerat när jag väl valt vad jag ville göra så jag han tyvärr inte med mycket mer. (Jag skriver detta lite senare på dagen) Till nästa lektion kommer jag att ha en mental plan på vad jag ska göra; vilket förhoppningsvis gör att jag kan vara mer produktiv än vad jag var idag. 
+        <h3>Lektion vecka 6</h3>
+        <!-- Fyll på med dokumentation här. -->
 
-    <h3>Lektion vecka 5</h3>
-    <!-- Fyll på med dokumentation här. -->
+        <h3>Lektion vecka 8</h3>
+        <!-- Fyll på med dokumentation här. -->
 
-    <h3>Lektion vecka 6</h3>
-    <!-- Fyll på med dokumentation här. -->
+        <h3>Lektion vecka 9</h3>
+        <!-- Fyll på med dokumentation här. -->
 
-    <h3>Lektion vecka 8</h3>
-    <!-- Fyll på med dokumentation här. -->
+        <h3>Lektion vecka 10</h3>
+        <!-- Fyll på med dokumentation här. -->
 
-    <h3>Lektion vecka 9</h3>
-    <!-- Fyll på med dokumentation här. -->
+        <h3>Lektion vecka 11</h3>
+        <!-- Fyll på med dokumentation här. -->
 
-    <h3>Lektion vecka 10</h3>
-    <!-- Fyll på med dokumentation här. -->
+        <h3>Lektion vecka 12</h3>
+        <!-- Fyll på med dokumentation här. -->
+    </section>
 
-    <h3>Lektion vecka 11</h3>
-    <!-- Fyll på med dokumentation här. -->
-
-    <h3>Lektion vecka 12</h3>
-    <!-- Fyll på med dokumentation här. -->
-
-    <h2>4. Testning</h2>
-    <!-- Testa i Chrome + Firefox eller Safari (på både dator och mobil). Skiljer sig resultatet? Har du behövt anpassa ditt kod/innehåll efter de olika webbläsarna? Hur gick valideringen? Vad säger contrastchecker.com om text/bakgrundsfärg? Hur ser resultatet ut på en riktig telefon? -->
-
-    <h2>5. Utvärdering</h2>
-    <!-- Ex: Vad gick bra/mindre bra? (i arbetet/din förmåga).
+    <section class="neomorph">
+        <h2>4. Testning</h2>
+        <!-- Testa i Chrome + Firefox eller Safari (på både dator och mobil). Skiljer sig resultatet? Har du behövt anpassa ditt kod/innehåll efter de olika webbläsarna? Hur gick valideringen? Vad säger contrastchecker.com om text/bakgrundsfärg? Hur ser resultatet ut på en riktig telefon? -->
+    </section>
+    <section class="neomorph">
+        <h2>5. Utvärdering</h2>
+        <!-- Ex: Vad gick bra/mindre bra? (i arbetet/din förmåga).
     Nyanserat: "hur hade det blivit om jag istället hade...?"
     Konkreta förbättringsförslag i produkt + process. -->
-
+    </section>
 </body>
+
 </html>
