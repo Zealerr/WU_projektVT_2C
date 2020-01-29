@@ -12,7 +12,6 @@
     <title>Dokumentation projekt Vt</title>
 
     <style>
-        
         td,
         th {
             border-bottom: 1px solid rgb(45, 97, 165);
@@ -40,7 +39,7 @@
         }
 
         .neomorph {
-            margin: 2em ;
+            margin: 2em;
             padding: 0.5em 1em 2em 1em;
             border-radius: 1em;
             box-shadow:
@@ -55,6 +54,10 @@
                 0.25em 0.25em 0.5em rgba(0, 0, 0, 0.1),
                 -0.25em -0.25em 0.5em rgba(255, 255, 255, 0.5);
         }
+
+        img {
+            width: 100%
+        }
     </style>
 
 </head>
@@ -65,10 +68,12 @@
     <section class="neomorph">
         <h2>1. Idébeskrivning</h2>
         <!-- Vad ska du göra? Vilken är din målgrupp? Om du utvecklar en tidigare sida; Vad ska du förändra/utveckla? -->
-        <p class="">En planerings hemsida där man kan lokalt lägga in deadlines och att göra listor. Målgruppen är alla som vill
+        <p class="">En planerings hemsida där man kan lokalt lägga in deadlines och att göra listor. Målgruppen är alla
+            som vill
             planera sitt liv. Det kan vara studenter som vill ha överblick över läxor, eller arbetande som vill ha en
             lokal planering tillgänglig på en hemsida. Det kommer göras med hjälp av cookies då jag ännu inte vet hur
-            man bygger dynamiska sidor. Med cookies blir det en hybrid. Inspiration tas från Trello.com där man kan göra
+            man bygger dynamiska sidor som kräver kontakt med en server. Med cookies blir det en hybrid. Inspiration tas
+            från Trello.com där man kan göra
             visuella listor på vad man ska göra, gör, och har gjort eller vilken typ av lista som helst. Den största
             utmaningen kommer alltså bli funktionaliteten på listorna och sortering av lokal data. Har kollat in
             neomorphism design och tänker att jag ska göra den här sidan på ett sådan stilrent sätt.</p>
@@ -78,10 +83,10 @@
 
         <h3>2.1 Handskiss</h3>
         <!-- Här lägger du en bild på din handskiss av layouten. Viktigt att du beskriver vilka boxelement som ska användas. Visa även hur du tänker med ditt grid (Hur många kolumner?) -->
-
+        <img src="skiss_1_mobil_layout.jpg" alt="">
+        <p>Hela sidan är en column när det är i mobil layout</p>
         <h3>2.2 Schema</h3>
         <!-- Vad ska du göra när? Inte för detaljerat. -->
-
         <table>
             <tr>
                 <th>V.</th>
@@ -212,7 +217,17 @@
 
         <h3>Lektion vecka 5</h3>
         <!-- Fyll på med dokumentation här. -->
-
+        <p>Idag har jag främst undersökt hur man hanterar lokalt sparad data. Bland annat hur man sparar och tar fram
+            sparad data och hur man kan spara flera olika värden på ett effektivt sätt och jag har även skissat lite mer.
+            Har lagt upp en skiss men jag glömde min förra skiss hemma så den får jag lägga in bild på lite senare. Jag
+            har även börjat planera vilken data jag kommer att spara och hur jag ska strukturera det. Det svåra just nu
+            är att hitta ett bra sätt för hur jag ska göra det möjligt att skapa så många listor man vill. Bör kanske ha
+            ett max antal men jag vill ändå att det skulle vara möjligt om jag inte hade ett max antal. Jag vill att i
+            princip allt man kan göra på min sida ska vara tillgängligt på index.html listorna kommer alltså att finnas
+            bredvid varandra men man kolla bara på en åt gången. Och om man inte sparat något data ska det inte finnas
+            massa tomma listor att scrolla mellan. Det ska inte finnas något mer än kanske en skapa lista knapp och
+            något mer. </p> 
+            <p>Till nästa lektion tänker jag att jag ska börja skriva ett test program på hur jag sparar och visar data och vad jag ska visa om det inte finns någon sparad data.</p>
         <h3>Lektion vecka 6</h3>
         <!-- Fyll på med dokumentation här. -->
 
