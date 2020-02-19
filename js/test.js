@@ -1,34 +1,34 @@
-const clear = document.querySelector(".clear");
-const input0 = document.getElementsByClassName("item-input")[0];
-
+// checkedmarker variables
 const CHECK = "fa-check-circle";
 const UNCHECK = "fa-circle-thin";
 
-const options = { day: "numeric", month: "numeric", year: "numeric" };
-const today = new Date();
+// function that adds an item in a specific list
 
-function addListItem(listNumber, name) {
+// function that starts addListItem if there is something written
+
+
+
+
+function removeListItem(listNumber, itemNumber) {
     listOflists = document.getElementsByClassName("list");
-    const item = `
-    <li id="listItem" class="listItem">
-        <div class="checkmark">
-            <i class="fa fa-circle-thin complete"></i>
-        </div>
-        <div class="title">
-            <p>${name}</p>
-        </div>
-        <div class="deleteItem">
-            <i class="fas fa-minus-square "></i>
-        </div>
-        <div class="description">
-            <p>Add a description</p>
-        </div>
-        <div class="deadline">
-            <p>Add a deadline</p>
-        </div>
-    </li>
-    `;
-    const position = "beforeend";
-    listOflists[listNumber].children[1].insertAdjacentHTML(position, item)
+    list = listOflists[listNumber].children[1];
+    const item = list[itemNumber]
 }
-addListItem(0, "New Item");
+
+
+let listsArray = [];
+
+const addList = list => {
+    listsArray.push([list]);
+    localStorage.setItem("data", JSON.stringify(listsArray));
+}
+
+const addItem = (listIndex, itemName) => {
+    if(listsArray[listIndex]){
+        listsArray[listIndex].push(itemName);
+        localStorage.setItem("data", JSON.stringify(listsArray));
+    } else {
+        console.log("There is no list at this index");
+    }
+}
+

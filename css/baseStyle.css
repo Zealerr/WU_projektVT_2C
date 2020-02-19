@@ -97,23 +97,22 @@ html {
     color: var(--blue);
 }
 
-
-
 /* list styling */
 
 .list {
     background-color: var(--quickMClr);
     width: 90vw;
+    height: 70vh;
     margin: 5vw 5vw 5vw 5vw;
     display: grid;
     grid-template-columns: 5% 90% 5%;
-    grid-template-rows: auto auto auto;
+    grid-template-rows: 10vh auto 6vh;
 }
 
 .list ul {
     grid-row: 2/3;
     grid-column: 2/3;
-    padding-bottom: 2vh;
+    overflow: hidden;
 }
 
 .list ul li {
@@ -204,6 +203,7 @@ html {
     height: 4vh;
     margin-left: 2vw;
     padding-left: 2vw;
+    width: 65vw;
 }
 
 .add-item input:focus {
