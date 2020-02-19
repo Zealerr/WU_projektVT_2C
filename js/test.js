@@ -7,22 +7,16 @@ const UNCHECK = "fa-circle-thin";
 // function that starts addListItem if there is something written
 
 
-
-
-function removeListItem(listNumber, itemNumber) {
-    listOflists = document.getElementsByClassName("list");
-    list = listOflists[listNumber].children[1];
-    const item = list[itemNumber]
-}
-
-
+// list of all lists variable
 let listsArray = [];
 
+// function that adds a new list
 const addList = list => {
     listsArray.push([list]);
     localStorage.setItem("data", JSON.stringify(listsArray));
 }
 
+// function that adds a new item into a specific list
 const addItem = (listIndex, itemName) => {
     if(listsArray[listIndex]){
         listsArray[listIndex].push(itemName);
@@ -32,3 +26,7 @@ const addItem = (listIndex, itemName) => {
     }
 }
 
+function clearData() {
+    listsArray = [];
+    localStorage.clearData();
+}
