@@ -1,6 +1,8 @@
 // checkedmarker variables
 const CHECK = "fa-check-circle";
 const UNCHECK = "fa-circle-thin";
+const content = document.getElementsByClassName("content")[0]
+const position = "beforeend";
 // list of all lists variable set to []
 let listsArray = [];
 
@@ -18,13 +20,16 @@ function setData() {
 }
 
 // function that adds a new list
+// both into local storage and on the site
 const addList = list => {
     getData();
     listsArray.push([list]);
     setData();
+    frontendAddlist(list)
 }
 
 // function that adds a new item into a specific list
+// both into local storage and on the site
 const addItem = (listIndex, itemName) => {
     getData();
     if (listsArray[listIndex]) {
@@ -33,6 +38,7 @@ const addItem = (listIndex, itemName) => {
     } else {
         console.log("There is no list at this index");
     }
+    frontendAdditem(itemName, listIndex)
 }
 
 // function that removes a list
@@ -42,8 +48,48 @@ const removeList = (listIndex) => {
     setData();
 }
 
-// function that clears all stored data and sets listsArray back to []
+// function that clears all stored data and sets
+// listsArray back to []
 function clearData() {
     listsArray = [];
-    localStorage.clearData();
+    localStorage.clear();
 }
+
+// change html by adding a new list
+function frontendAddlist(listName) {
+    const list = `
+                <section class="list">
+                    <div class="listTitle">
+                        <p>${listName}</p>
+                    </div>
+                    <ul>
+                    </ul>
+                    <div class="add-item">
+                        <label for="item-input"><i class="fas fa-plus-circle fa-2x" aria-hidden="true"></i></label>
+                        <input class="item-input" type="text" id="item-input" placeholder="Add a list item">
+                    </div>
+                </section>
+                `;
+    content.insertAdjacentHTML(position, list);
+}
+
+// change html by adding a new item into a 
+// specific list
+function frontendAdditem(itemName, listIndex){
+    const item = `
+                <li class="listItem">
+                    <div class="checkmark">
+                        <i class="fa fa-circle-thin complete"></i>
+                    </div>
+                    <div class="title">
+                        <p>${itemName}</p>
+                    </div>
+                    <div class="deleteItem">
+                        <i class="fas fa-minus-square "></i>
+                    </div>
+                </li>            
+                `;
+    let list = document.getElementsByClassName("list")[listIndex].children[1];
+    list.insertAdjacentHTML(position, item);
+}
+
