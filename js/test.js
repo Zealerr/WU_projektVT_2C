@@ -28,6 +28,15 @@ const addList = list => {
     frontendAddlist(list)
 }
 
+// function that removes a list
+const removeList = (listIndex) => {
+    getData;
+    listsArray.splice(listIndex);
+    let lists = document.getElementsByClassName("list");
+    lists[listIndex].remove();
+    setData();
+}
+
 // function that adds a new item into a specific list
 // both into local storage and on the site
 const addItem = (listIndex, itemName) => {
@@ -37,14 +46,16 @@ const addItem = (listIndex, itemName) => {
         setData();
     } else {
         console.log("There is no list at this index");
+        return
     }
     frontendAdditem(itemName, listIndex)
 }
 
-// function that removes a list
-const removeList = (listIndex) => {
-    getData;
-    listsArray.splice(listIndex);
+// funtion that  removes an item
+const removeItem = (listIndex, itemIndex) => {
+    getData();
+    console.log(listsArray[listIndex]);
+    console.log(listsArray[listIndex][itemIndex])
     setData();
 }
 
