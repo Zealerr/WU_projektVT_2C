@@ -53,6 +53,12 @@ const removeList = (listIndex) => {
 function clearData() {
     listsArray = [];
     localStorage.clear();
+    let lists = document.getElementsByClassName("list");
+    if (lists.length > 0) {
+        while (lists.length > 0) {
+            lists[0].remove();
+        }
+    }
 }
 
 // change html by adding a new list
@@ -65,8 +71,8 @@ function frontendAddlist(listName) {
                     <ul>
                     </ul>
                     <div class="add-item">
-                        <label for="item-input"><i class="fas fa-plus-circle fa-2x" aria-hidden="true"></i></label>
-                        <input class="item-input" type="text" id="item-input" placeholder="Add a list item">
+                        <label for="${listName}"><i class="fas fa-plus-circle fa-2x" aria-hidden="true"></i></label>
+                        <input class="item-input" type="text" id="${listName}" placeholder="Add a list item">
                     </div>
                 </section>
                 `;
@@ -90,6 +96,26 @@ function frontendAdditem(itemName, listIndex){
                 </li>            
                 `;
     let list = document.getElementsByClassName("list")[listIndex].children[1];
+    
     list.insertAdjacentHTML(position, item);
+}
+
+
+// load all data stored
+window.onload = loadlists();
+
+// function that gets data from local storage
+// and iterates trough all the data
+function loadlists(){
+    getData();
+    listsArray.forEach(loadlist);
+}
+
+// function that loads list name and all its items
+function loadlist(value, index) {
+    frontendAddlist(value[0]);
+    for (i = 1; i < value.length; i++) {
+        frontendAdditem(value[i], index);
+    }
 }
 
