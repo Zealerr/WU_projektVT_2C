@@ -2,7 +2,8 @@
 const CHECK = "fa-check-circle";
 const UNCHECK = "fa-circle-thin";
 const content = document.getElementsByClassName("content")[0]
-const position = "beforeend";
+const last = "beforeend";
+const penultimate = "";
 // list of all lists variable set to []
 let listsArray = [];
 
@@ -25,13 +26,13 @@ const addList = list => {
     getData();
     listsArray.push([list]);
     setData();
-    frontendAddlist(list)
+    frontendAddlist(list, listsArray.length - 1)
 }
 
 // function that removes a list
 const removeList = (listIndex) => {
-    getData;
-    listsArray.splice(listIndex);
+    getData();
+    listsArray.splice(listIndex, 1);
     let lists = document.getElementsByClassName("list");
     lists[listIndex].remove();
     setData();
@@ -54,8 +55,11 @@ const addItem = (listIndex, itemName) => {
 // funtion that  removes an item
 const removeItem = (listIndex, itemIndex) => {
     getData();
-    console.log(listsArray[listIndex]);
-    console.log(listsArray[listIndex][itemIndex])
+    listsArray[listIndex].splice(itemIndex, 1);
+    let list = document.getElementsByClassName("list")[listIndex].children[1].children;
+    console.log(list[itemIndex - 2]);
+    console.log(itemIndex);
+    list[itemIndex - 1].remove();
     setData();
 }
 
@@ -73,21 +77,28 @@ function clearData() {
 }
 
 // change html by adding a new list
-function frontendAddlist(listName) {
+function frontendAddlist(listName, index) {
     const list = `
-                <section class="list">
-                    <div class="listTitle">
-                        <p>${listName}</p>
-                    </div>
-                    <ul>
-                    </ul>
-                    <div class="add-item">
-                        <label for="${listName}"><i class="fas fa-plus-circle fa-2x" aria-hidden="true"></i></label>
-                        <input class="item-input" type="text" id="${listName}" placeholder="Add a list item">
-                    </div>
+                <section class="list-holder">
+                    <section class="list">
+                        <div class="listTitle">
+                            <p>${listName}</p>
+                            <div class="deleteList">
+                                <i class="fas fa-minus-square "></i>
+                            </div>
+                        </div>
+                        
+                        <ul>
+                        </ul>
+                        <div class="add-item">
+                            <label for="${listName}"><i class="fas fa-plus-circle fa-2x" aria-hidden="true"></i></label>
+                            <input class="item-input" type="text" id="${listName}" placeholder="Add a list item">
+                        </div>
+                    </section>
                 </section>
                 `;
-    content.insertAdjacentHTML(position, list);
+    content.insertAdjacentHTML(last, list);
+    addDeleteListListener(index)
 }
 
 // change html by adding a new item into a 
@@ -108,9 +119,9 @@ function frontendAdditem(itemName, listIndex){
                 `;
     let list = document.getElementsByClassName("list")[listIndex].children[1];
     
-    list.insertAdjacentHTML(position, item);
+    list.insertAdjacentHTML(last, item);
+    addDeleteItemListener(listIndex);
 }
-
 
 // load all data stored
 window.onload = loadlists();
@@ -124,9 +135,24 @@ function loadlists(){
 
 // function that loads list name and all its items
 function loadlist(value, index) {
-    frontendAddlist(value[0]);
+    frontendAddlist(value[0], index);
     for (i = 1; i < value.length; i++) {
         frontendAdditem(value[i], index);
     }
 }
 
+// Eventlisteners
+function addDeleteListListener(i) {
+    let newList = document.getElementsByClassName("list");
+    let deleteListButton = newList[newList.length - 1].children[0].children[1]
+    console.log(deleteListButton);
+    deleteListButton.addEventListener("click", function() { removeList(i); });
+}
+
+function addDeleteItemListener(listIndex) {
+    let list = document.getElementsByClassName("list")[listIndex].children[1].children;
+    let deleteItemButton = list[list.length - 1].children[2];
+    console.log(deleteItemButton);
+    console.log(list.length)
+    deleteItemButton.addEventListener("click", function() { removeItem(listIndex, list.length) })
+}
