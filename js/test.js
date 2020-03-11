@@ -48,7 +48,7 @@ const removeList = (id) => {
     getData();
     let listLength = listsArray.length;
     for (let i = 0; i < listLength; i++) {
-        if(listsArray[i][0].id == id) {
+        if (listsArray[i][0].id == id) {
             listsArray.splice(i, 1);
             break;
         }
@@ -66,15 +66,15 @@ const addItem = (listObject, itemName) => {
     let listIndex;
     let lists = document.getElementsByClassName("list-holder");
     for (let i = 0; i < lists.length; i++) {
-        if(lists[i].id == listObject.id) {
+        if (lists[i].id == listObject.id) {
             listIndex = i;
         }
     }
     getData();
     if (document.getElementById(`${listObject.id}`)) {
         item = {
-            name: itemName, 
-            id: `${listIndex}${listsArray[listIndex].length - 1}`, 
+            name: itemName,
+            id: `${listIndex}${listsArray[listIndex].length - 1}`,
             done: false
         };
         listsArray[listIndex].push(item);
@@ -89,7 +89,7 @@ const addItem = (listObject, itemName) => {
 // funtion that  removes an item
 function removeItem(listId, id) {
     getData();
-    for ( let i = 0; i < listsArray.length; i++) {
+    for (let i = 0; i < listsArray.length; i++) {
         if (listsArray[i][0].id == listId) {
             for (let y = 1; y < listsArray[i][y].id; i++) {
                 if (listsArray[i][y].id == id) {
@@ -128,7 +128,7 @@ function frontendAddlist(listObject) {
                 <section id=${listObject.id} class="list-holder">
                     <section class="list">
                         <div class="listTitle">
-                            <p>${listObject.name}</p>
+                            <h1>${listObject.name}</h1>
                             <div class="deleteList">
                                 <i class="fas fa-minus-square "></i>
                             </div>
@@ -144,7 +144,7 @@ function frontendAddlist(listObject) {
                 `;
     content.insertAdjacentHTML(last, list);
     deleteListListeners(listObject.id);
-    
+
 }
 
 // change html by adding a new item into a 
@@ -190,10 +190,12 @@ window.onload = startFunctionLoad();
 
 // function that gets data from local storage
 // and iterates trough all the data
-function startFunctionLoad(){
+function startFunctionLoad() {
     getData();
     listsArray.forEach(loadlist);
     listPopupListener();
+    infoPopupListener();
+    clearDataButtonListener();
 }
 
 // function that loads each list, it's link and all its items
@@ -206,14 +208,13 @@ function loadlist(value, index) {
     setData()
 }
 
-
 // Eventlisteners
 
 // list specific
 function deleteListListeners(id) {
     let newList = document.getElementsByClassName("list");
     let deleteListButton = newList[newList.length - 1].children[0].children[1];
-    deleteListButton.addEventListener("click", function() { removeList(id); });
+    deleteListButton.addEventListener("click", function () { removeList(id); });
 }
 
 // list item specific
@@ -221,12 +222,12 @@ function deleteItemListeners(listIndex, id) {
     let listId = document.getElementsByClassName("list-holder")[listIndex].id;
     let list = document.getElementById(`${listId}`).children[0].children[1].children;
     deleteItemButton = list[list.length - 1].children[2];
-    deleteItemButton.addEventListener("click", function() { removeItem(listId, id); })
+    deleteItemButton.addEventListener("click", function () { removeItem(listId, id); })
 }
 
 function addItemInputListener(listObject) {
     let inputButton = document.getElementById(`${listObject.id}`).children[0].children[2].children;
-    inputButton[0].addEventListener("click", function() {
+    inputButton[0].addEventListener("click", function () {
         if (inputButton[1].value) {
             addItem(listObject, inputButton[1].value);
             inputButton[1].value = "";
@@ -241,27 +242,60 @@ function listPopupListener() {
     let listClosePopup = listPopup.children[0].children[0];
     let listPopupAdd = listPopup.children[0].children[1];
     let listPopupInput = listPopup.children[0].children[2];
-    let plusButton = document.getElementsByClassName("fa-plus")[0];
-
-    listButton.addEventListener("click", function() {
+    let plusButton = document.getElementsByClassName("addlist-plus")[0];
+    listButton.addEventListener("click", function () {
         listPopup.classList.remove("closed");
         listPopupInput.focus();
     });
 
-    plusButton.addEventListener("click", function() {
+    plusButton.addEventListener("click", function () {
         listPopup.classList.remove("closed");
         listPopupInput.focus();
     });
-    listClosePopup.addEventListener("click", function() {
+    listClosePopup.addEventListener("click", function () {
         listPopup.classList.add("closed");
     });
-    listPopupAdd.addEventListener("click", function() {
+    listPopupAdd.addEventListener("click", function () {
         if (listPopupInput.value) {
             addList(listPopupInput.value);
             listPopup.classList.add("closed");
             listPopupInput.value = "";
         }
     });
+}
+
+// add info pop-up listeners
+function infoPopupListener() {
+    let infoButton = document.getElementsByClassName("info-button")[0];
+    let infoPopup = document.getElementsByClassName("info")[0];
+    let closeInfoPupup = infoPopup.children[0].children[0];
+    infoButton.addEventListener("click", function () {
+        infoPopup.classList.remove("closed");
+    });
+    closeInfoPupup.addEventListener("click", function () {
+        infoPopup.classList.add("closed");
+    });
+}
+
+// add clear data button listener
+function clearDataButtonListener() {
+    let clearDataButton = document.getElementsByClassName("clear")[0];
+    let clearDataPopup = document.getElementsByClassName("clear-popup")[0]
+    let closeDataPopup = clearDataPopup.children[0].children[2];
+    let deleteDataButton = clearDataPopup.children[0].children[1];
+
+    clearDataButton.addEventListener("click", function() {
+        clearDataPopup.classList.remove("closed");
+    });
+    closeDataPopup.addEventListener("click", function() {
+        clearDataPopup.classList.add("closed");
+    });
+    deleteDataButton.addEventListener("click", function() {
+        clearData();
+        clearDataPopup.classList.add("closed");
+    });
+
+
 }
 
 // function that scrolls to newest list

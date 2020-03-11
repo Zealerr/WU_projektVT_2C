@@ -13,7 +13,7 @@
 
 <body>
     <section class="pageContainer">
-        <section class="header">
+        <header class="header">
             <section class="logo">
                 <div class="info-button">
                     <i class="far fa-question-circle fa-2x"></i>
@@ -33,32 +33,54 @@
             <div class="addlist-plus">
                 <i class="fas fa-plus fa-2x"></i>
             </div>
-            <section class="info">
-
-            </section>
-        </section>
-        <section class="content">
+            <aside class="info closed">
+                <article>
+                    <i class="fas fa-window-close fa-2x" aria-hidden="true"></i>
+                    <h1>Info</h1>
+                    <section class="info-content">
+                        <figure>
+                            <img src="img/blue-keyboard.jpg" alt="">
+                        </figure>
+                        <h2>How to use this app</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti itaque non ex qui labore! Mollitia optio quae laboriosam impedit cumque delectus, alias et ipsa deserunt unde iusto facere distinctio! Optio eos expedita placeat doloribus fugit beatae eligendi minus? Dolorem, obcaecati.</p>
+                        <figure>
+                            <img src="img/blue-keyboard.jpg" alt="">
+                        </figure>
+                        <h2>How to use this app</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti itaque non ex qui labore! Mollitia optio quae laboriosam impedit cumque delectus, alias et ipsa deserunt unde iusto facere distinctio! Optio eos expedita placeat doloribus fugit beatae eligendi minus? Dolorem, obcaecati.</p>
+                    </section>
+                    <span></span>
+                </article>
+            </aside>
+            <aside class="clear-popup closed">
+                <div class="delete-data">
+                    <h2>Are you sure you want to delete your saved data?</h2>
+                    <button class="yesButton">Yes</button>
+                    <button class="noButton">No</button>
+                </div>
+            </aside>
+        </header>
+        <main class="content">
             <section id="frontpage"class="frontpage">
-                <section class="frontimg">
+                <figure class="frontimg">
                     <img src="img/blue-keyboard.jpg" alt="">
-                </section>
+                </figure>
                 <section class="create-list-box">
                     <button class="newListButton">
                         NEW LIST!
                     </button>
                 </section>
             </section>
-        </section>
-        <section class="newlist-popup closed">
+        </main>
+        <aside class="newlist-popup closed">
             <div class="add-list">
                 <i class="fas fa-window-close fa-2x"></i>
                 <i class="fas fa-plus-circle fa-2x" aria-hidden="true"></i>
                 <input class="item-input" type="text" placeholder="Add a list!">
             </div>
-        </section>
+        </aside>
         
     </section>
     <script src="js/test.js"></script>
 </body>
-
 </html>
