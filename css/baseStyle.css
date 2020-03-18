@@ -121,7 +121,7 @@ html {
     width: 90vw;
     background-color: var(--quickMClr);
     margin-left: 5vw;
-    top: 16.5vh;
+    top: 9vh;
     margin-top: 5vw;
     border-radius: 2vh;
     position: relative;
@@ -649,4 +649,44 @@ html {
         top: 20px;
     }
         
+
+    /* clear data popup styling */
+    .clear-popup {
+        background-color: rgba(0, 0, 0, 0);
+        width: unset;
+        height: unset;
+        top: 9vh;
+        margin-top: 40px;
+        right: 100px;
+        z-index: 2;
+    }
+    .delete-data{
+        width: var(--desktopListWidth);
+        margin-left: 0;
+        top: 0;
+        margin-top: 0;
+        border: 5px solid var(--fontcheckedclr);
+        border-radius: 20px;
+        position: relative;
+        display: grid;
+        grid-template-columns: 20px auto auto 20px;
+        box-shadow: 0px 5px black;
+    }
+
+    .delete-data h2 {
+        margin-top: 20px;
+        grid-column: 2/4;
+    }
+    
+    .delete-data button {
+        margin: 20px 20px;
+        width: unset;
+        height: unset;
+        border: none;
+        border-radius: 10px;
+        color: white;
+        box-shadow: 0 5px black;
+    }
+    
+    
 }

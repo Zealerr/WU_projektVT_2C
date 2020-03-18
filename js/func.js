@@ -3,7 +3,6 @@ const CHECK = "fa-check-circle";
 const UNCHECK = "fa-circle-thin";
 const content = document.getElementsByClassName("content")[0];
 const last = "beforeend";
-const penultimate = "";
 // list of all lists variable set to []
 let listsArray = [];
 
@@ -17,12 +16,6 @@ function getData() {
 
 // function that sets localstorage variable to what listsArray is
 function setData() {
-    for (let i = 0; i < listsArray.length; i++) {
-        listsArray[i][0].id = `${i}`;
-        for (let y = 1; y < listsArray[i].length; y++) {
-            listsArray[i][y].id = `${i}${y}`
-        }
-    }
     localStorage.setItem("data", JSON.stringify(listsArray));
 }
 
@@ -37,10 +30,8 @@ const addList = listName => {
     listsArray.push([list]);
     setData();
     frontendAddlist(list, listsArray.length - 1);
-    frontendAddLink(listsArray.length - 1, list);
+    frontendAddLink(list);
     scrollToLatest();
-
-
 }
 
 // function that removes a list
@@ -63,6 +54,7 @@ const removeList = (id) => {
 // function that adds a new item into a specific list
 // both into local storage and on the site
 const addItem = (listObject, itemName) => {
+    getData();
     let listIndex;
     let lists = document.getElementsByClassName("list-holder");
     for (let i = 0; i < lists.length; i++) {
@@ -70,11 +62,10 @@ const addItem = (listObject, itemName) => {
             listIndex = i;
         }
     }
-    getData();
     if (document.getElementById(`${listObject.id}`)) {
         item = {
             name: itemName,
-            id: `${listIndex}${listsArray[listIndex].length - 1}`,
+            id: `${listIndex}${listsArray[listIndex].length}`,
             done: false
         };
         listsArray[listIndex].push(item);
@@ -168,13 +159,13 @@ function frontendAdditem(itemObject, listIndex) {
     let list = document.getElementsByClassName("list")[listIndex].children[1];
     list.insertAdjacentHTML(last, item);
     deleteItemListeners(listIndex, itemObject.id);
+    checkerListener(itemObject);
 }
 
 // function that adds a link to navigation
-function frontendAddLink(index, listObject) {
-    let listId = document.getElementsByClassName("list-holder")[index].id;
+function frontendAddLink(listObject) {
     const link = `
-                <a id="for-list${listObject.id}" href="#${listId}">
+                <a id="for-list${listObject.id}" href="#${listObject.id}">
                     <div class="current-list">
                         <i class="fa fa-circle-thin fa-2x"></i>
                     </div>
@@ -183,6 +174,20 @@ function frontendAddLink(index, listObject) {
     quickmenu = document.getElementsByClassName("quickmenu")[0];
     quickmenu.insertAdjacentHTML(last, link);
     addItemInputListener(listObject);
+}
+
+// function that checks / unchecks an item
+function checkItem(itemObject) {
+    getData();
+    item = listsArray[itemObject.id[0]][itemObject.id[1]];
+    if (itemObject.done) {
+        itemObject.done = false;
+        item.done = false;
+    } else {
+        itemObject.done = true;
+        item.done = true;
+    }
+    setData();
 }
 
 // load all data stored
@@ -196,12 +201,18 @@ function startFunctionLoad() {
     listPopupListener();
     infoPopupListener();
     clearDataButtonListener();
+    for (let i = 0; i < listsArray.length; i++) {
+        listsArray[i][0].id = `${i}`;
+        for (let y = 1; y < listsArray[i].length; y++) {
+            listsArray[i][y].id = `${i}${y}`
+        }
+    }
 }
 
 // function that loads each list, it's link and all its items
 function loadlist(value, index) {
     frontendAddlist(value[0]);
-    frontendAddLink(index, value[0]);
+    frontendAddLink(value[0]);
     for (i = 1; i < value.length; i++) {
         frontendAdditem(value[i], index);
     }
@@ -212,17 +223,17 @@ function loadlist(value, index) {
 
 // list specific
 function deleteListListeners(id) {
-    let newList = document.getElementsByClassName("list");
-    let deleteListButton = newList[newList.length - 1].children[0].children[1];
-    deleteListButton.addEventListener("click", function () { removeList(id); });
-}
-
-// list item specific
-function deleteItemListeners(listIndex, id) {
-    let listId = document.getElementsByClassName("list-holder")[listIndex].id;
-    let list = document.getElementById(`${listId}`).children[0].children[1].children;
-    deleteItemButton = list[list.length - 1].children[2];
-    deleteItemButton.addEventListener("click", function () { removeItem(listId, id); })
+    if(listsArray.length > 0) {
+        let newList = document.getElementsByClassName("list");
+        let deleteListButton = newList[newList.length - 1].children[0].children[1];
+        
+        deleteListButton.addEventListener("click", function () { 
+            removeList(id); 
+            listsArray.forEach(function(value) {
+                deleteListListeners(value[0].id);    
+            });
+        });
+    }
 }
 
 function addItemInputListener(listObject) {
@@ -233,7 +244,41 @@ function addItemInputListener(listObject) {
             inputButton[1].value = "";
         }
     });
+    inputButton[1].addEventListener("keyup", function(event) {
+        if (event.keyCode == 13) {
+            if (inputButton[1].value) {
+                addItem(listObject, inputButton[1].value);
+                inputButton[1].value = "";
+            }
+        }
+    });
 }
+
+// list item specific
+function deleteItemListeners(listIndex, id) {
+    let listId = document.getElementsByClassName("list-holder")[listIndex].id;
+    let list = document.getElementById(`${listId}`).children[0].children[1].children;
+    deleteItemButton = list[list.length - 1].children[2];
+    deleteItemButton.addEventListener("click", function () { removeItem(listId, id); })
+}
+
+function checkerListener(itemObject) {  
+    let item = document.getElementById(`${itemObject.id}`);
+    let checkmark = item.children[0];
+    
+    checkmark.addEventListener("click", function() {
+        checkItem(itemObject);
+        if (itemObject.done) {
+            checkmark.children[0].classList.add(`${CHECK}`);
+            checkmark.children[0].classList.remove(`${UNCHECK}`);
+        } else {
+            checkmark.children[0].classList.add(`${UNCHECK}`);
+            checkmark.children[0].classList.remove(`${CHECK}`);
+        }
+        item.children[1].children[0].classList.toggle("line");
+    });
+}
+
 
 // add list pop-up listener
 function listPopupListener() {
@@ -243,17 +288,32 @@ function listPopupListener() {
     let listPopupAdd = listPopup.children[0].children[1];
     let listPopupInput = listPopup.children[0].children[2];
     let plusButton = document.getElementsByClassName("addlist-plus")[0];
-    listButton.addEventListener("click", function () {
-        listPopup.classList.remove("closed");
-        listPopupInput.focus();
-    });
+    let clearDataPopup = document.getElementsByClassName("clear-popup")[0];
 
+    listButton.addEventListener("click", function () {
+        if(clearDataPopup.classList.contains("closed")) {
+            listPopup.classList.toggle("closed");
+            listPopupInput.focus();
+        } else {
+            clearDataPopup.classList.toggle("closed");
+            listPopup.classList.toggle("closed");
+            listPopupInput.focus();
+        }
+    });
     plusButton.addEventListener("click", function () {
-        listPopup.classList.remove("closed");
-        listPopupInput.focus();
+        if(clearDataPopup.classList.contains("closed")) {
+            listPopup.classList.toggle("closed");
+            listPopupInput.focus();
+        } else {
+            clearDataPopup.classList.toggle("closed");
+            listPopup.classList.toggle("closed");
+            listPopupInput.focus();
+        }
     });
     listClosePopup.addEventListener("click", function () {
         listPopup.classList.add("closed");
+        
+        listPopupInput.value = "";
     });
     listPopupAdd.addEventListener("click", function () {
         if (listPopupInput.value) {
@@ -280,12 +340,18 @@ function infoPopupListener() {
 // add clear data button listener
 function clearDataButtonListener() {
     let clearDataButton = document.getElementsByClassName("clear")[0];
-    let clearDataPopup = document.getElementsByClassName("clear-popup")[0]
+    let clearDataPopup = document.getElementsByClassName("clear-popup")[0];
     let closeDataPopup = clearDataPopup.children[0].children[2];
     let deleteDataButton = clearDataPopup.children[0].children[1];
+    let listPopup = document.getElementsByClassName("newlist-popup")[0];
 
     clearDataButton.addEventListener("click", function() {
-        clearDataPopup.classList.remove("closed");
+        if(listPopup.classList.contains("closed")) {
+            clearDataPopup.classList.toggle("closed");
+        } else {
+            clearDataPopup.classList.toggle("closed");
+            listPopup.classList.toggle("closed");
+        }
     });
     closeDataPopup.addEventListener("click", function() {
         clearDataPopup.classList.add("closed");
@@ -319,3 +385,4 @@ function LinkColorChange() {
     }
 }
 setInterval(LinkColorChange, 100);
+
