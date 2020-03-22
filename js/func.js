@@ -9,7 +9,7 @@ let listsArray = [];
 // function to set listsArray to the locally stored data. If no data
 // is stored then listsArray is not changed
 function getData() {
-    if (JSON.parse(localStorage.getItem("data")) != null) {
+    if (JSON.parse(localStorage.getItem("data")) !== null) {
         listsArray = JSON.parse(localStorage.getItem("data"));
     }
 }
@@ -23,19 +23,21 @@ function setData() {
 // both into local storage and on the site
 const addList = listName => {
     getData();
-    let list = {
-        name: `${listName}`,
-        id: `${listsArray.length}`
+    if (listsArray.length < 10) {
+        let list = {
+            name: `${listName}`,
+            id: `${listsArray.length}`
+        };
+        listsArray.push([list]);
+        setData();
+        frontendAddlist(list, listsArray.length - 1);
+        frontendAddLink(list);
+        scrollToLatest();
     }
-    listsArray.push([list]);
-    setData();
-    frontendAddlist(list, listsArray.length - 1);
-    frontendAddLink(list);
-    scrollToLatest();
-}
+};
 
 // function that removes a list
-const removeList = (id) => {
+function removeList(id) {
     getData();
     let listLength = listsArray.length;
     for (let i = 0; i < listLength; i++) {
@@ -45,6 +47,7 @@ const removeList = (id) => {
         }
     }
     let list = document.getElementById(`${id}`);
+    console.log(list);
     list.remove();
     setData();
     let link = document.getElementById(`for-list${id}`)
@@ -80,13 +83,16 @@ const addItem = (listObject, itemName) => {
 // funtion that  removes an item
 function removeItem(listId, id) {
     getData();
+    console.log(id);
     for (let i = 0; i < listsArray.length; i++) {
         if (listsArray[i][0].id == listId) {
-            for (let y = 1; y < listsArray[i][y].id; i++) {
+            console.log(listsArray[i][0].id);
+            for (let y = 1; y < listsArray[i].length; y++) {
                 if (listsArray[i][y].id == id) {
+                    console.log(listsArray[i][y]);
                     listsArray[i].splice(y, 1);
+                    break
                 }
-                break
             }
             break
         }
@@ -179,7 +185,8 @@ function frontendAddLink(listObject) {
 // function that checks / unchecks an item
 function checkItem(itemObject) {
     getData();
-    item = listsArray[itemObject.id[0]][itemObject.id[1]];
+    console.log(itemObject.id.slice(1));
+    item = listsArray[itemObject.id[0]][itemObject.id.slice(1)];
     if (itemObject.done) {
         itemObject.done = false;
         item.done = false;
@@ -226,12 +233,8 @@ function deleteListListeners(id) {
     if(listsArray.length > 0) {
         let newList = document.getElementsByClassName("list");
         let deleteListButton = newList[newList.length - 1].children[0].children[1];
-        
-        deleteListButton.addEventListener("click", function () { 
-            removeList(id); 
-            listsArray.forEach(function(value) {
-                deleteListListeners(value[0].id);    
-            });
+        deleteListButton.addEventListener("click", function () {
+            removeList(id);
         });
     }
 }

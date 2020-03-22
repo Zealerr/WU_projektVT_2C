@@ -12,13 +12,13 @@
 </head>
 
 <body>
-    <section class="pageContainer">
+    <main class="pageContainer">
         <header class="header">
             <section class="logo">
                 <div class="info-button">
                     <i class="far fa-question-circle fa-2x"></i>
                 </div>
-                <p>LISTY</p>
+                <a href="misc/planering.html">Listy</a>
                 <div class="clear">
                     <i class="delete fas fa-trash fa-2x"></i>
                 </div>
@@ -38,16 +38,46 @@
                     <i class="fas fa-window-close fa-2x" aria-hidden="true"></i>
                     <h1>Info</h1>
                     <section class="info-content">
-                        <figure>
-                            <img src="img/blue-keyboard.jpg" alt="">
-                        </figure>
-                        <h2>How to use this app</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti itaque non ex qui labore! Mollitia optio quae laboriosam impedit cumque delectus, alias et ipsa deserunt unde iusto facere distinctio! Optio eos expedita placeat doloribus fugit beatae eligendi minus? Dolorem, obcaecati.</p>
-                        <figure>
-                            <img src="img/blue-keyboard.jpg" alt="">
-                        </figure>
-                        <h2>How to use this app</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti itaque non ex qui labore! Mollitia optio quae laboriosam impedit cumque delectus, alias et ipsa deserunt unde iusto facere distinctio! Optio eos expedita placeat doloribus fugit beatae eligendi minus? Dolorem, obcaecati.</p>
+                        <div class="addList-carousel">
+                            <div class="images">
+                                <figure id="infoImg1" class="infoimg">
+                                    <img src="img/newList!button.png" alt="">
+                                </figure>
+                                <figure id="infoImg2" class="infoimg">
+                                    <img src="img/addlistpopup.png" alt="">
+                                </figure>
+                                <figure id="infoImg3" class="infoimg">
+                                    <img src="img/newlist.png" alt="">
+                                </figure>
+                            </div>
+                            <a href="#infoImg1"><div class="infoimglink">1</div></a>
+                            <a href="#infoImg2"><div class="infoimglink">2</div></a>
+                            <a href="#infoImg3"><div class="infoimglink">3</div></a>
+                        </div>
+                        <h2>How to add a list</h2>
+                        <ol>
+                            <li>
+                                <p>Klick the "New list!" button</p>
+                            </li>
+                            <li>
+                                <p>Add a list</p>
+                            </li>
+                            <li>
+                                <p>Voilà!</p>
+                            </li>
+                        </ol>
+                        <h2>How to add a list item</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti itaque non ex qui labore!
+                            Mollitia optio quae laboriosam impedit cumque delectus, alias et ipsa deserunt unde iusto
+                            facere distinctio! Optio eos expedita placeat doloribus fugit beatae eligendi minus?
+                            Dolorem, obcaecati.</p>
+                        <h2>Extra funktionality</h2>
+                        <h3>Check off an item!</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur placeat optio quisquam
+                            non, maxime cupiditate illum maiores quidem. Eos, quisquam!</p>
+                        <h3>Clear all you data!</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur fugit sint ipsa porro ab
+                            eligendi?</p>
                     </section>
                     <span></span>
                 </article>
@@ -59,11 +89,19 @@
                     <button class="noButton">No</button>
                 </div>
             </aside>
+            <aside class="newlist-popup closed">
+                <div class="add-list">
+                    <i class="fas fa-window-close fa-2x"></i>
+                    <i class="fas fa-plus-circle fa-2x" aria-hidden="true"></i>
+                    <input class="item-input" type="text" placeholder="Add a list!">
+                </div>
+            </aside>
         </header>
-        <main class="content">
-            <section id="frontpage"class="frontpage">
+        <section class="content">
+            <section id="frontpage" class="frontpage">
                 <figure class="frontimg">
                     <img src="img/blue-keyboard.jpg" alt="">
+                    <p>Welcome! Click logo to go to the documentation.</p>
                 </figure>
                 <section class="create-list-box">
                     <button class="newListButton">
@@ -71,16 +109,9 @@
                     </button>
                 </section>
             </section>
-        </main>
-        <aside class="newlist-popup closed">
-            <div class="add-list">
-                <i class="fas fa-window-close fa-2x"></i>
-                <i class="fas fa-plus-circle fa-2x" aria-hidden="true"></i>
-                <input class="item-input" type="text" placeholder="Add a list!">
-            </div>
-        </aside>
-        
-    </section>
+        </section>
+    </main>
     <script src="js/func.js"></script>
 </body>
+
 </html>

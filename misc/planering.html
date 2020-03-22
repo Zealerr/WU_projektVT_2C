@@ -21,6 +21,14 @@
             margin: 0;
             top: 0;
             background-color: #e2e2e2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+        }
+
+        body>section {
+            width: 40vw;
         }
 
         h1 {
@@ -57,6 +65,32 @@
 
         img {
             width: 100%
+        }
+
+
+
+        @media screen and (max-width: 1600px) {
+            body>section {
+                width: 50vw;
+            }
+        }
+
+        @media screen and (max-width: 1400px) {
+            body>section {
+                width: 60vw;
+            }
+        }
+
+        @media screen and (max-width: 1200px) {
+            body>section {
+                width: 70vw;
+            }
+        }
+
+        @media screen and (max-width: 1000px) {
+            body>section {
+                width: 80vw;
+            }
         }
     </style>
 
@@ -206,7 +240,6 @@
             </tr>
         </table>
     </section>
-
     <section class="neomorph">
         <h2>3. Dokumentation</h2>
         <!-- Här skriver du efter varje lektion. Vad har jag gjort? Vad gick bra? Vad gick mindre bra? Vad ska jag tänka på till nästa gång? -->
@@ -311,16 +344,127 @@
             lämna in. Tänker lägga fokus på text och bilder då det är det som bedöms och förhoppningsvis hinner jag med
             allt jag vill göra.</p>
     </section>
-
     <section class="neomorph">
         <h2>4. Testning</h2>
         <!-- Testa i Chrome + Firefox eller Safari (på både dator och mobil). Skiljer sig resultatet? Har du behövt anpassa ditt kod/innehåll efter de olika webbläsarna? Hur gick valideringen? Vad säger contrastchecker.com om text/bakgrundsfärg? Hur ser resultatet ut på en riktig telefon? -->
+        <h3>4.1 webbläsarna</h3>
+        <p>Min sida fungerar utan problem på chrome, opera, firefox och microsoft edge men inte på internet explorer,
+            både dator och mobil funkar bra. Detta är på grund av att internet explorer inte verkar ha support for de
+            ikoner som min sida använder vilka ligger på en extern server. Dock fanns det ett litet problem med
+            scrollbaren. Att använda "overflow: overlay" var inte supportat av alla webbläsare vilket gjorde att
+            listorna utseende kunde bli lite felplacerade men annars kunde jag inte hitta något annat.</p>
+        <h3>4.2 Validering</h3>
+        <h4>4.2.1 CSS</h4>
+        <p>Vad gällde css validering fanns det endast problem med att jag använde css variabler och overflow: overlay;.
+            Vilket enligt mig är utmärkt resultat, men jag har lite svårt att förstå varför validering såg variabler som
+            ett problem då jag gjorde exakt som w3schools rekommenderade.</p>
+        <h4>4.2.2 Html</h4>
+        <p>Här har jag endast fått varningar vad gäller användning av headers i syfte av att hjälpa screen readers. Det
+            är något jag bör ha tänkt på och kollat in lite mer exakt hur jag borde ha använt dessa. Bland annat hade
+            jag missförstått lite vilket syfte h1 har. Förutom detta fanns det inte några fel med detta dokument. </p>
+        <h4>4.2.3 javascript</h4>
+        <p>Här var det enda problemen/varningarna jag fick att inte allt jag skrivit skulle funka med alla webbläsarna,
+            mer specifikt äldre webbläsare. När jag skrev koden var jag väldigt tydligt med att alltid använda semicolon
+            för att avsluta rader, trots det fanns det lite platser där jag glömt detta. Det är inte något som förstör
+            koden men var något som valideringarna uppmärksammade.</p>
+        <h3>4.3 Contrastchecker</h3>
+        <img src="contrast_logo.PNG" alt="">
+        <img src="contrast_texxt.PNG" alt="">
+        <p>I mitt fall har jag valt att gå emot vad contrastchecker visar och fortsätta använda de färger jag valt.
+            Anledningen till detta är först för att i den här applikationen så ligger färg fokuset på att den visuellt
+            ska vara enhetlig med min egen sida och att den ska vara i "darkmode". Det resulterar i att man inte kan ha
+            för starka kontraster vad gäller färgstyrka då hela idén är att det ska komma mindre ljus från skärmen och
+            det på så sätt ska vara snällare på ögonen. Trots det hade jag inte trott att det skulle vara så dåligt
+            resultat och då jag själv bland annat testade monokromt hade jag inte några problem att se allt tydligt.</p>
+        <h3>4.4 På telefon</h3>
+        <p>På telefon ser det ut exakt som då man minskar fönsterbredden till minsta och alla knappar funkar som det ska
+            vad jag testade.</p>
+        <p>här är länk till video av sidan:
+            https://drive.google.com/file/d/1zJeD6pgyl2MjatCe-d0FKjs9H2cjF29X/view?usp=sharing</p>
     </section>
     <section class="neomorph">
         <h2>5. Utvärdering</h2>
         <!-- Ex: Vad gick bra/mindre bra? (i arbetet/din förmåga).
     Nyanserat: "hur hade det blivit om jag istället hade...?"
     Konkreta förbättringsförslag i produkt + process. -->
+        <h3>Planering</h3>
+        <p>Enligt mig så var planeringen tillsammans med dokumentationen varje vecka väldigt användbar för att hålla
+            koll på vad jag höll på med och vad jag behövde göra. När det är en så lång period som detta projektet hade,
+            så kan det vara svårt att hålla uppe fokuset genom hela projektet. Men för mig har det inte varit något
+            problem. Jag var dock lite optimistisk med hur lång tid vissa saker skulle ta att göra. Bland annat,
+            tidigare i projektet, trodde jag att det skulle gå hyffsat snabbt att få till applikationen trots att jag
+            inte direkt hade lärt mig javascript innan. Jag hoppade in i min idé rätt så blint vad gällde hur mycket kod
+            jag skulle behöva skriva och lära mig. Det resulterade i att jag framför allt jobbade på koden och inte på
+            vad detta projektet faktiskt skulle bedömas på. Jag hoppas bara att det jag gjort är tillräckligt ad gäller
+            den saken. </p>
+        <h3>Process</h3>
+        <p>Processen under hela projektet har gått bra för mig. Jag har dokumenterat varje vecka hur det går och vad jag
+            håller på med i stunden samt vad jag tänker på. Dock tycker jag att det har varit svårt att veta vad jag
+            borde ha fokuserat på och när. Det här var det första stora projektet som vi gjort både vad gäller tid och
+            skala på sida. Dessutom har vi inte några konkreta exempel på hur man ska ta sig an en sådan här uppgift.
+            Alltså i vilken ordning som man kan göra saker för att arbetet ska bli effektivt. Ska man först fokusera på
+            vad som ska finnas på sidan? all text och all bilder? eller ska man börja på helhetsutseendet först? Sen är
+            det all funktionalitet som man skulle vilja fanns också. I detta fallet blev det en blandning där man la
+            till lite av allt allt eftersom och gjorde en planering som verkade rimlig. I visa fall, som med mig och
+            koden, så kan prioriteringar ha blivit lite fel och man har inte hunnit med allt man hade velat. Jag borde
+            kanske ha tänkt om min sida och vad den ska handla om, eller tidigare börjat fixa med annat än just
+            javascripten. </p>
+        <p>Jag skulle säga att den här uppgiften också är lite för omfattande vad gäller att det vi ska bedömas på. Vi
+            skulle både komma på en sida, vad som ska finnas på sida, all text, vilka bilder, och dessutom hur allt ska
+            passa ihop och fungera. Det är väldigt mycket och fokuset ska ju ligga på att bygga upp en sida. Inte ,
+            enligt mig, att komma på vad man ska göra en sida kring, eller vad som ska finnas rent informations mässigt
+            på sidan. Dessutom har man behövt ta stort eget ansvar vad gäller att lära sig om olika taggar, och sätt som
+            man kan bygga upp sidor. Enligt mig har det varit otroligt lite vi gått igenom på lektion. Den grunden som
+            alla ska få är nästan upp till var och en vad den blir. Att då ha projekt där texter och oredigerade bilder
+            finns tillgängliga, där man sedan ska bygga upp sidan med ett syfte. Det tror jag skulle vara en bättre
+            uppgift. För att den här kursen handlar, som jag sett det, om att lära sig bygga upp och designa sidor på
+            ett sätt som liknar verkligheten där man gör sidor åt någon. Jag kan förstå att det tar bort friheten lite
+            men jag tror att det skulle hjälpa folk att fokusera på att lära sig bygga upp sidor på ett bättre sätt.
+        </p>
+
+        <h3>Produkt</h3>
+        <p>Först och främst är jag väldigt nöjd med min produkt. Jag lyckades i princip få till applikationen exkat så
+            man jag ville att den skulle fungera. Sidan har allt jag hade som mål att minst få med. Men det var en del
+            saker som jag inte är helt nöjd med. Bland annat är sidan inte så "mjuk" jag har inte lagt ner tid på att
+            fixa med animationer som skulle göra sidan mer trevlig att använda. Användarupplevelsen är mycket viktig så
+            jag hade kunnat förbättra bland annat hur all popup fönster kommer fram. Å andra sidan är det mycket vanligt
+            att popup fönster kommer fram omedelbart så det kanske inte är något jag borde fukusera på om jag fortsätter
+            förbättra sidan.</p>
+        <p>Dessutom hade jag kunnat fixa till fler anpassningar än bara mobil och dator. Exempelvis tablet som har ett
+            helt annar skärm förhållande. En grej som jag haft svårt med det är att bestämma när jag ska använda
+            konkreta storlekar såsom antal pixlar eller när jag ska använda relativa storlekar såsom bredden eller
+            höjden på fönstret. Ibland kan det bli väldigt fel om man använder relativa mått för mycket men samtidigt är
+            det svårt att veta vad som är bra konkreta mått då det finns en sådan stor variation på skärm storlekar</p>
+        <h3>Vad gick bra</h3>
+        <p>Kortfattar gick det mycket bra att lära mig och använda javascript, samt dokumentationen var jag mycker
+            regelbunden med vilket jag är glad för.</p>
+        <h3>Vad gick dåligt</h3>
+        <p>Kortfattar hade jag svårt med att komma på hur jag ville strukturera min javascript och när vår adobe licens
+            gick ut mitt under projektet hade jag mycket problem att fixa till bra bildhantering. Ett problem jag hade i
+            början var att jag inte kom på vad jag ville skapa för slags sida. Det gjorde att en hel vecka gick åt till
+            att bara tänka och jag fick inte gjort något. För andra kan det ha tagit ännu längre tid att bestämma sig.
+        </p>
+        <h3>Vad skulle kunna förbättras?</h3>
+        <h4>Produkt</h4>
+        <p>Jag kan lägga till animationer och skriva riktig text där det ska vara brödtext. Förutom det skulle jag även
+            kunna designa om vissa delar såsom själva listorna så att de inte har lite mer variation och färg. Dessutom
+            skulle jag kunna lägga till en "ligh/dark-mode" switch som ändras så att allt blir ljust då vissa gillar det
+            mer än darkmode. Jag borde dessutonm lägga till mer bilder och text i infodelen och designa om hur det popup
+            fönstret ska se ut. Kanse att jag ska samla ihop knappar så att de ligger i en meny istället. Jag skulle
+            även kunna lägga till att man kan klicka enter för att lägga till en ny lista då man skrivit namnet, det
+            fungerar vara för själva sakerna i listorna just nu. Och så borde jag ändra på vilka taggar jag använt för
+            texter och titlar så att det funkar som det ska för screen readers. Det finns alltås en hel del grejer som
+            jag skulle kunna/borde kanske fixa.</p>
+        <h4>Process</h4>
+        <p>Planera bättre och fixa mina prioriteringar är något som kan förbättras. Dessutom borde jag ha tagit en paus
+            från javascripten och inte försökt bli färdig med den innan jag gick över till andra delar av projektet. Det
+            var så klart svårt att se allt som behövde göras i förväg då det var det första stora projektet men nu i
+            efterhand går det att se att jag borde ha en tydligare plan innan jag drar igång arbetet. </p>
+        <h3>Sammanfattning</h3>
+        <p>Avslutningsvis var det här ett mycket givande projekt och jag har lärt mig enorm mycket tack vare mitt stora
+            intresse för ämnet. Mycket skulle kunna förbättras vad gäller mig själv, hur jag jobbar och hur uppgifter
+            kan vara strukturerade men i slutändan funkade det ändå rätt bra. Tack så mycket för tipsen och rådgivningen
+            på vägen. Jag ser fram emot nästa projekt.</p>
     </section>
 </body>
 
