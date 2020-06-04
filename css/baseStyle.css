@@ -295,6 +295,7 @@ html {
     margin: 0;
     padding: 0;
     position: relative;
+    
 }
 
 .frontimg img {
@@ -654,10 +655,9 @@ html {
         width: 70%;
     }
     .create-list-box {
-        position: absolute;
         width: var(--desktopListWidth);
         margin: 0;
-        top: 30vh;
+        margin-top: 20px;
         border-radius: 20px;
     }
     .create-list-box button {
