@@ -604,7 +604,7 @@ html {
 
 /* Desktop specific styling */
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 900px) {
     /* header specific */
     .pageContainer {
         grid-template-rows: 9vh auto;
